@@ -1,4 +1,4 @@
-# HK Restaurant Web
+# Henry Restaurant Web
 
 Ứng dụng web Spring Boot, Thymeleaf và JavaScript dùng lại entity, DAO và service của bản Swing. Điểm khởi chạy web là `com.hk_restaurant.web.WebLauncher`; `AppLauncher` vẫn chạy desktop.
 
@@ -19,12 +19,19 @@ Tài khoản dữ liệu mẫu: `admin / 123456` (quản trị), `phucvu1 / 1234
 
 Script ưu tiên `DB_PASSWORD` trong terminal. Nếu chưa đặt, script đọc biến này từ cấu hình AppLauncher hiện có trong `.idea/workspace.xml`, không ghi mật khẩu vào file mới. Bỏ `-Build` khi chỉ muốn chạy JAR đã build. Ctrl+C để dừng.
 
-Hoặc build và chạy thủ công:
+Trước khi build lại, dừng server cũ bằng Ctrl+C tại terminal chạy web hoặc Stop trong IntelliJ để giải phóng file JAR. Nếu server được mở từ cửa sổ khác, cần dừng tại cửa sổ đó.
+
+Hoặc build và chạy thủ công trong PowerShell tại thư mục gốc dự án:
 
 ```powershell
+$env:DB_PASSWORD = 'THAY_BANG_MAT_KHAU_DATABASE_RENDER'
 mvn package
-java -jar target/HK_Restaurant-1.0.0.jar
+if ($LASTEXITCODE -eq 0) {
+    java -jar target/HK_Restaurant-1.0.0.jar
+}
 ```
+
+Thay mật khẩu mẫu bằng mật khẩu database Render. Biến đặt trong Run Configuration của IntelliJ không tự truyền sang terminal. Khi build thất bại, không chạy tiếp JAR vì file có thể chưa được Spring Boot đóng gói xong. Nếu đã có JAR build thành công và chưa sửa source, không cần build lại.
 
 ## Chức năng
 
