@@ -1,0 +1,71 @@
+
+<persistence
+        xmlns="https://jakarta.ee/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version="3.0"
+        xsi:schemaLocation="
+      https://jakarta.ee/xml/ns/persistence
+      https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="restaurantPU"
+                      transaction-type="RESOURCE_LOCAL">
+
+        <provider>
+            org.hibernate.jpa.HibernatePersistenceProvider
+        </provider>
+
+        <!-- Các Entity của HK_Restaurant -->
+        <class>com.hk_restaurant.model.entity.LoaiMon</class>
+        <class>com.hk_restaurant.model.entity.MonAn</class>
+        <class>com.hk_restaurant.model.entity.GhiChuMon</class>
+        <class>com.hk_restaurant.model.entity.BanAn</class>
+        <class>com.hk_restaurant.model.entity.NhanVien</class>
+        <class>com.hk_restaurant.model.entity.DonHang</class>
+        <class>com.hk_restaurant.model.entity.ChiTietDonHang</class>
+        <class>com.hk_restaurant.model.entity.HoaDon</class>
+
+        <properties>
+
+            <!-- PostgreSQL JDBC Driver -->
+            <property
+                    name="jakarta.persistence.jdbc.driver"
+                    value="org.postgresql.Driver"/>
+
+            <!-- PostgreSQL Render URL -->
+            <property
+                    name="jakarta.persistence.jdbc.url"
+                    value="jdbc:postgresql://dpg-dbl9iftg1s2s73e23hu0-a.singapore-postgres.render.com:5432/test_db_o340?sslmode=require"/>
+
+            <!-- Database Username -->
+            <property
+                    name="jakarta.persistence.jdbc.user"
+                    value="test_db_o340_user"/>
+
+            <!-- Password được cung cấp từ Java -->
+            <!-- Không ghi mật khẩu thật tại đây -->
+
+            <!-- Hibernate PostgreSQL Dialect -->
+            <property
+                    name="hibernate.dialect"
+                    value="org.hibernate.dialect.PostgreSQLDialect"/>
+
+            <!-- Không tự động thay đổi cấu trúc bảng -->
+            <property
+                    name="hibernate.hbm2ddl.auto"
+                    value="none"/>
+
+            <!-- Hiển thị SQL -->
+            <property
+                    name="hibernate.show_sql"
+                    value="true"/>
+
+            <!-- Định dạng SQL -->
+            <property
+                    name="hibernate.format_sql"
+                    value="true"/>
+
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
